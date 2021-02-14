@@ -14,8 +14,6 @@ nltk.download("wordnet")
 nltk.download("maxent_ne_chunker")
 nltk.download("words")
 
-import spacy
-
 DOMAIN_STOPWORDS = [
     "lady",
     "sir",

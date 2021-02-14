@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
-import charts.constants as con
+import app.charts.constants as con
 
 
 def render_sen_by_cat(df):

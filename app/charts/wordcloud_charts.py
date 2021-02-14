@@ -1,7 +1,7 @@
 import streamlit as st
 from wordcloud import WordCloud
-from utils import preprocess
-import charts.constants as con
+from app.utils import preprocess
+import app.charts.constants as con
 
 
 def render_wordcloud(df, col_text):

@@ -1,64 +1,66 @@
 import streamlit as st
 import pandas as pd
 import time
-from layout.header import render_header
-from layout.sidebar import render_sidebar
-from layout.body import render_body
-from nlp import sentiment, mlc, ner
+from app.layout.header import render_header
+from app.layout.sidebar import render_sidebar
+from app.layout.body import render_body
+from app.nlp import sentiment, mlc, ner
 
-st.set_page_config(layout="wide")
 
-t = time.time()
-render_header()
+def run_app():
 
-load_btn, run_btn, save_ckb, config = render_sidebar()
+    st.set_page_config(layout="wide")
 
-entities = []
-progress_bar = st.progress(0)
-status_text = st.empty()
+    t = time.time()
+    render_header()
 
-if run_btn:
-    progress_bar.progress(20)
-    status_text.text("Data loaded")
-    df = config["df"]
-    col_text = config["col_text"]
+    load_btn, run_btn, save_ckb, config = render_sidebar()
 
-    progress_bar.progress(40)
-    status_text.text("Sentiment Analysis in progress...")
-    df_new = sentiment.run_sentiment_analysis(df, col_text)
-    status_text.text("Done perfoming Sentiment Analysis")
+    progress_bar = st.progress(0)
+    status_text = st.empty()
 
-    progress_bar.progress(60)
-    status_text.text("Multi-label classification in progress...")
-    df_new = mlc.run_multi_label_classification(df_new, col_text)
-    status_text.text("Done performing Mulit-Label Classification")
+    if run_btn:
+        progress_bar.progress(20)
+        status_text.text("Data loaded")
+        df = config["df"]
+        col_text = config["col_text"]
 
-    progress_bar.progress(80)
-    status_text.text("Entity Recognition in progress...")
-    df_preds, df_ents = ner.run_named_entity_recognition(df_new, col_text)
-    status_text.text("Done performing Named Entity Recognition")
+        progress_bar.progress(40)
+        status_text.text("Sentiment Analysis in progress...")
+        df_new = sentiment.run_sentiment_analysis(df, col_text)
+        status_text.text("Done perfoming Sentiment Analysis")
 
-    if save_ckb:
-        df_preds.to_csv("./app/data/df_preds.csv", index=False)
-        df_ents.to_csv("./app/data/df_ents.csv", index=False)
+        progress_bar.progress(60)
+        status_text.text("Multi-label classification in progress...")
+        df_new = mlc.run_multi_label_classification(df_new, col_text)
+        status_text.text("Done performing Mulit-Label Classification")
 
-    render_body(df_preds, df_ents)
-    progress_bar.progress(100)
+        progress_bar.progress(80)
+        status_text.text("Entity Recognition in progress...")
+        df_preds, df_ents = ner.run_named_entity_recognition(df_new, col_text)
+        status_text.text("Done performing Named Entity Recognition")
 
-    elapsed_time = round(time.time() - t, 2)
-    time_unit = "seconds"
-    if elapsed_time > 60:
-        elapsed_time = round(elapsed_time / 60, 2)
-        time_unit = "minutes"
+        if save_ckb:
+            df_preds.to_csv("./app/data/df_preds.csv", index=False)
+            df_ents.to_csv("./app/data/df_ents.csv", index=False)
 
-    status_text.success(
-        f"Done with all tasks! (Elapsed time: {elapsed_time} {time_unit})"
-    )
+        render_body(df_preds, df_ents)
+        progress_bar.progress(100)
 
-elif load_btn:
-    df_preds = pd.read_csv("./app/data/df_preds.csv")
-    df_ents = pd.read_csv("./app/data/df_ents.csv")
+        elapsed_time = round(time.time() - t, 2)
+        time_unit = "seconds"
+        if elapsed_time > 60:
+            elapsed_time = round(elapsed_time / 60, 2)
+            time_unit = "minutes"
 
-    render_body(df_preds, df_ents)
-    progress_bar.progress(100)
-    status_text.success(f"Loaded previous results: Rows ({len(df_preds)})")
+        status_text.success(
+            f"Done with all tasks! (Elapsed time: {elapsed_time} {time_unit})"
+        )
+
+    elif load_btn:
+        df_preds = pd.read_csv("./app/data/df_preds.csv")
+        df_ents = pd.read_csv("./app/data/df_ents.csv")
+
+        render_body(df_preds, df_ents)
+        progress_bar.progress(100)
+        status_text.success(f"Loaded previous results: Rows ({len(df_preds)})")

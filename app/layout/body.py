@@ -1,12 +1,12 @@
 import streamlit as st
-from charts.category_charts import render_cat_by_count, render_cat_by_time
-from charts.sentiment_charts import (
+from app.charts.category_charts import render_cat_by_count, render_cat_by_time
+from app.charts.sentiment_charts import (
     render_sen_by_cat,
     render_sen_by_time,
     sen_by_count_donut,
 )
-from charts.wordcloud_charts import render_wordcloud
-from charts.entity_charts import render_entity_by_sen
+from app.charts.wordcloud_charts import render_wordcloud
+from app.charts.entity_charts import render_entity_by_sen
 
 
 def render_body(df_preds, df_ents):

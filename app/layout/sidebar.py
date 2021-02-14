@@ -1,5 +1,5 @@
 import streamlit as st
-from utils.load_data import read_csv_to_config, check_local_availability
+from app.utils.load_data import read_csv_to_config, check_local_availability
 
 
 def render_sidebar():
