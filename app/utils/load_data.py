@@ -54,7 +54,7 @@ def read_csv_to_config(isLocal, file, limit, col_text, col_date, col_others=""):
         cols.extend(col_others.split(","))
 
     nrows = get_limit(limit)
-    df_raw = pd.read_csv(file_name, nrows=nrows)
+    df_raw = pd.read_csv(file_name)
 
     if nrows == None:
         df = df_raw
