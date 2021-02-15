@@ -142,3 +142,4 @@ cython_debug/
 
 # Custom
 model
+.DS_Store
