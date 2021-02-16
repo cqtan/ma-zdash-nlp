@@ -44,7 +44,7 @@ def render_sidebar():
         cols_optional = st.text_input("(Optional) Subset of columns to import")
         col1, col2 = st.beta_columns(2)
 
-        save_ckb = st.checkbox("Save results after running", value=True)
+        save_ckb = st.checkbox("Save results after running", value=False)
 
         with col1:
             load_btn = st.button("Load Previous")
