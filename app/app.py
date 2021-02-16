@@ -14,7 +14,8 @@ def run_app():
     t = time.time()
     render_header()
 
-    load_btn, run_btn, save_ckb, config = render_sidebar()
+    # load_btn, run_btn, save_ckb, config = render_sidebar()
+    load_btn, run_btn, config = render_sidebar()
 
     progress_bar = st.progress(0)
     status_text = st.empty()
@@ -40,9 +41,9 @@ def run_app():
         df_preds, df_ents = ner.run_named_entity_recognition(df_new, col_text)
         status_text.text("Done performing Named Entity Recognition")
 
-        if save_ckb:
-            df_preds.to_csv("./app/data/df_preds.csv", index=False)
-            df_ents.to_csv("./app/data/df_ents.csv", index=False)
+        # if save_ckb:
+        #     df_preds.to_csv("./app/data/df_preds.csv", index=False)
+        #     df_ents.to_csv("./app/data/df_ents.csv", index=False)
 
         render_body(df_preds, df_ents)
         progress_bar.progress(100)

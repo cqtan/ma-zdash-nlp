@@ -44,10 +44,10 @@ def render_sidebar():
         cols_optional = st.text_input("(Optional) Subset of columns to import")
         col1, col2 = st.beta_columns(2)
 
-        save_ckb = st.checkbox("Save results after running", value=False)
+        # save_ckb = st.checkbox("Save results after running", value=False)
 
         with col1:
-            load_btn = st.button("Load Previous")
+            load_btn = st.button("Load demo data")
 
         with col2:
             run_btn = st.button("Run NLP")
@@ -77,4 +77,4 @@ def render_sidebar():
             else:
                 st.warning("Please provide both column name for text and date")
 
-    return load_btn, run_btn, save_ckb, config
+    return load_btn, run_btn, config
