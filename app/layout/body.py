@@ -6,12 +6,12 @@ from app.charts.sentiment_charts import (
     sen_by_count_donut,
 )
 from app.charts.wordcloud_charts import render_wordcloud
-from app.charts.entity_charts import render_entity_by_sen
+from app.charts.entity_charts import render_single_entity_by_sen
 
 
-def render_body(df_preds, df_ents):
+def render_body(df_preds, df_ents, labels2ents):
 
-    entities = df_ents["entity"].astype(str).tolist()
+    # entities = df_ents["entity"].astype(str).tolist()
 
     # Category distribution (frequency)
     col1, col2 = st.beta_columns(2)
@@ -41,7 +41,8 @@ def render_body(df_preds, df_ents):
         render_wordcloud(df_preds, "feedback_text_en")
 
     # Entity by sentiment
-    render_entity_by_sen(df_preds, entities)
+    render_single_entity_by_sen(df_preds, labels2ents, "PROD")
+    render_single_entity_by_sen(df_preds, labels2ents, "BRND")
 
     col1, col2 = st.beta_columns([4, 1])
     with col1:

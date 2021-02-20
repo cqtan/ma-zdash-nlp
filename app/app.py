@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import pickle
 import time
 from app.layout.header import render_header
 from app.layout.sidebar import render_sidebar
@@ -38,14 +39,20 @@ def run_app():
 
         progress_bar.progress(80)
         status_text.text("Entity Recognition in progress...")
-        df_preds, df_ents = ner.run_named_entity_recognition(df_new, col_text)
+        df_preds, df_ents, labels2ents = ner.run_named_entity_recognition(
+            df_new, col_text
+        )
         status_text.text("Done performing Named Entity Recognition")
 
-        # if save_ckb:
-        #     df_preds.to_csv("./app/data/df_preds.csv", index=False)
-        #     df_ents.to_csv("./app/data/df_ents.csv", index=False)
+        print(f"ents: {df_ents}")
 
-        render_body(df_preds, df_ents)
+        # if save_ckb:
+        # df_preds.to_csv("./app/data/df_preds.csv", index=False)
+        # df_ents.to_csv("./app/data/df_ents.csv", index=False)
+        # with open("./app/data/labels2ents.pickle", "wb") as file:
+        #     pickle.dump(labels2ents, file, pickle.HIGHEST_PROTOCOL)
+
+        render_body(df_preds, df_ents, labels2ents)
         progress_bar.progress(100)
 
         elapsed_time = round(time.time() - t, 2)
@@ -61,7 +68,10 @@ def run_app():
     elif load_btn:
         df_preds = pd.read_csv("./app/data/df_preds.csv")
         df_ents = pd.read_csv("./app/data/df_ents.csv")
+        labels2ents = dict()
+        with open("./app/data/labels2ents.pickle", "rb") as file:
+            labels2ents = pickle.load(file)
 
-        render_body(df_preds, df_ents)
+        render_body(df_preds, df_ents, labels2ents)
         progress_bar.progress(100)
         status_text.success(f"Loaded previous results: Rows ({len(df_preds)})")

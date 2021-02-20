@@ -1,28 +1,31 @@
 import streamlit as st
-import pandas as pd
 import plotly.graph_objects as go
 import app.charts.constants as con
 
 
-def render_entity_by_sen(df, entities):
-    st.subheader("Entity by Sentiment")
+def render_single_entity_by_sen(df, labels2ents, label_type):
+    st.subheader(f"Entity by Sentiment ({label_type})")
+    entities = set(list(labels2ents[label_type]))
+    ent2sents = dict(zip(entities, [[0, 0, 0] for _ in range(len(entities))]))
+
     df_ents = df[df["entities"].astype(str) != "[]"]  # Filtering out empty lists
     if len(df_ents):
         ents = df_ents["entities"].astype(str).tolist()
-        ent2val = dict(zip(entities, [[0, 0, 0] for _ in range(len(entities))]))
         for i, ent in enumerate(ents):
             ent = ent[1:-1].replace("'", "").replace(" ", "")
             ent_list = ent.split(",")
-            for e in ent_list:
-                if df_ents["p_sentiment"].iloc[i] == "negative":
-                    ent2val[e][0] += 1
-                elif df_ents["p_sentiment"].iloc[i] == "neutral":
-                    ent2val[e][1] += 1
-                else:
-                    ent2val[e][2] += 1
 
-        x = list(ent2val.keys())
-        y = list(ent2val.values())
+            for e in ent_list:
+                if e in ent2sents:
+                    if df_ents["p_sentiment"].iloc[i] == "negative":
+                        ent2sents[e][0] += 1
+                    elif df_ents["p_sentiment"].iloc[i] == "neutral":
+                        ent2sents[e][1] += 1
+                    else:
+                        ent2sents[e][2] += 1
+
+        x = list(ent2sents.keys())
+        y = list(ent2sents.values())
 
         fig = go.Figure()
         for i, sen in enumerate(con.sentiment_labels):
