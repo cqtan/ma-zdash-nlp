@@ -49,6 +49,6 @@ def render_single_entity_by_sen(df, labels2ents, label_type):
             showlegend=True,
         )
 
-        st.plotly_chart(fig)
+        st.plotly_chart(fig, use_container_width=True)
     else:
         st.warning("No entities recognized")

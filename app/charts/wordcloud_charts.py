@@ -25,4 +25,4 @@ def render_wordcloud(df, col_text):
         collocations=False,
     ).generate(text)
 
-    st.image(wordcloud.to_array())
+    st.image(wordcloud.to_array(), use_container_width=True)

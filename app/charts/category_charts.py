@@ -28,7 +28,7 @@ def render_cat_by_count(df):
         margin=con.chart_margins,
         showlegend=False,
     )
-    st.plotly_chart(fig)
+    st.plotly_chart(fig, use_container_width=True)
 
 
 # Categories by time (month)
@@ -61,9 +61,10 @@ def render_cat_by_time(df):
         xaxis=dict(
             domain=[0, 1],
         ),
+        autosize=True,
         height=con.chart_height,
         paper_bgcolor=con.paper_bgcolor,
         margin=con.chart_margins,
         showlegend=True,
     )
-    st.plotly_chart(fig)
+    st.plotly_chart(fig, use_container_width=True)

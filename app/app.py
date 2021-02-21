@@ -48,7 +48,7 @@ def run_app():
         # df_preds.to_csv("./app/data/df_preds.csv", index=False)
         # df_ents.to_csv("./app/data/df_ents.csv", index=False)
         # with open("./app/data/labels2ents.pickle", "wb") as file:
-        #     pickle.dump(labels2ents, file, pickle.HIGHEST_PROTOCOL)
+        #     pickle.dump(labels2ents, file, protocol=4)
 
         render_body(df_preds, df_ents, labels2ents)
         progress_bar.progress(100)

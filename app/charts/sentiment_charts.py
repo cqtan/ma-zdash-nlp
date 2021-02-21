@@ -129,7 +129,7 @@ def render_sen_by_cat(df):
 
     fig.update_layout(annotations=annotations)
 
-    st.plotly_chart(fig)
+    st.plotly_chart(fig, use_container_width=True)
 
 
 def render_sen_by_time(df):
@@ -166,7 +166,7 @@ def render_sen_by_time(df):
         margin=con.chart_margins,
         showlegend=True,
     )
-    st.plotly_chart(fig)
+    st.plotly_chart(fig, use_container_width=True)
 
 
 def sen_by_count_donut(df):
@@ -194,4 +194,4 @@ def sen_by_count_donut(df):
         margin=con.chart_margins,
         showlegend=True,
     )
-    st.plotly_chart(fig)
+    st.plotly_chart(fig, use_container_width=True)
