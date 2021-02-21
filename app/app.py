@@ -44,8 +44,6 @@ def run_app():
         )
         status_text.text("Done performing Named Entity Recognition")
 
-        print(f"ents: {df_ents}")
-
         # if save_ckb:
         # df_preds.to_csv("./app/data/df_preds.csv", index=False)
         # df_ents.to_csv("./app/data/df_ents.csv", index=False)
