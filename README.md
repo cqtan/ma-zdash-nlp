@@ -9,7 +9,7 @@
 
 ## Description
 
-Gathering large amounts of annotated textual data by hand or statistical means is a tedious and time consuming process. The following demo application utilizes a light version of the popular BERT architecture known as DistilBERT to perform a small number of Natural Language Processing (NLP) tasks to infer insights on customer feedback texts. This architecture allows good confidence in its predictions with the use of a relatively small number of training data. Insights gained are illustrated as a collection of charts (dashboard) resulting from the following tasks:
+Gathering large amounts of annotated textual data by hand or by statistical means is a tedious and time consuming process. The following demo application utilizes a light version of the popular BERT architecture known as DistilBERT to perform a small number of Natural Language Processing (NLP) tasks to infer insights on customer feedback texts. This architecture allows good confidence in its predictions with the use of a relatively small number of training data. Insights gained are illustrated as a collection of charts (dashboard) resulting from the following tasks:
 
 - Sentiment Analysis (negative, neutral, positive)
 - Multi-Label Classification (Theme of the text)

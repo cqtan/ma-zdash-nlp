@@ -7,7 +7,7 @@ def render_header():
         st.text("")
 
         st.markdown(
-            "Gathering large amounts of annotated textual data by hand is a tedious and time consuming process. The following demo application utilizes a light version of the popular BERT architecture known as DistilBERT to perform a small number of Natural Language Processing (NLP) tasks to infer insights on customer feedback texts. This architecture allowed good confidence in its predictions with the use of a relatively small number of training data. Insights gained are illustrated as a collection of charts (dashboard) resulting from the following tasks: "
+            "Gathering large amounts of annotated textual data by hand or by statistical means is a tedious and time consuming process. The following demo application utilizes a light version of the popular BERT architecture known as DistilBERT to perform a small number of Natural Language Processing (NLP) tasks to infer insights on customer feedback texts. This architecture allowed good confidence in its predictions with the use of a relatively small number of training data. Insights gained are illustrated as a collection of charts (dashboard) resulting from the following tasks: "
         )
         st.markdown(
             "- Sentiment Analysis (negative, neutral, positive)\n- Multi-Label Classification (Theme of the text)\n- Named Entity Recognition (Extraction of certain words)"
