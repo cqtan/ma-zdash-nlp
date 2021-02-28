@@ -15,13 +15,13 @@ def render_header():
         st.text("")
 
         st.markdown(
-            "Results are highly tied to the kind of data the application is trained on, which makes it fairly context dependent to its domain and tasks. While its accuracy could still be improved the main goal was to quickly prototype an application that does not require much training resources in order to achieve usable results in an efficient manner."
-        )
-
-        st.markdown(
-            "Setup the application in the sidebar to generate the dashboard housing the insights in the form of charts. You can either load the previous results or run a new session."
+            "Results are highly tied to the kind of data the application is trained on, which makes it fairly context dependent to its domain and tasks. While its accuracy could still be improved the main goal was to quickly prototype an application that does not require much training resources in order to achieve usable results in an efficient manner and to evaluate its potential."
         )
 
         st.markdown(
             "Models are available on [HuggingFace](https://huggingface.co/CouchCat), which are trained on a small custom customer feedback dataset. This following dataset, however, has been cleaned and does not include numbers or names for demo purposes"
+        )
+
+        st.markdown(
+            "Setup the application in the sidebar to generate the dashboard housing the insights in the form of charts. You can either load the previous results or run a new session. It is advised to select a low number of samples if running NLP online due to hardware restrictions (100 samples takes almost 3 minutes to process). For larger sample size, install this project locally for quicker inference [Github link](https://github.com/CouchCat/ma-zdash-nlp)"
         )
