@@ -1,6 +1,8 @@
 [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/couchcat/ma-zdash-nlp/main)
 
-# Master Thesis Prototype: zDash NLP
+# zDash NLP
+
+## Master Thesis Prototype
 
 ![Screenshot 2021-03-03 at 22 40 49](https://user-images.githubusercontent.com/33485290/111790183-3b02bc00-88c2-11eb-928c-05cd1380ab50.png)
 
