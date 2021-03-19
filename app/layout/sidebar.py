@@ -20,7 +20,7 @@ def render_sidebar():
         if data_location == "Cloud Storage":
             data_link = st.text_input(
                 "Paste link to CSV here",
-                value="https://drive.google.com/file/d/1H1HrNTpuDwSRZ3k1OC9KnPf2cQXRqsVT/view?usp=sharing",
+                value="https://drive.google.com/file/d/1Ilc_ApV-_JDNgFF3mx2SvsOz-XovP8LF/view?usp=sharing",
             )
         else:
             file_name = st.text_input("Enter file name", file_name_default)
